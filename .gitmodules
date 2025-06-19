@@ -1,0 +1,3 @@
+[submodule "tools/ai-collab"]
+	path = tools/ai-collab
+	url = https://github.com/stlas/ai-collab.git

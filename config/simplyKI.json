@@ -1,0 +1,36 @@
+{
+  "platform": {
+    "name": "SimplyKI",
+    "version": "1.0.0",
+    "description": "Meta-Framework for AI Development Tools"
+  },
+  "web": {
+    "port": 3000,
+    "host": "localhost",
+    "api_prefix": "/api/v1",
+    "frontend_framework": "vue"
+  },
+  "auth": {
+    "enabled": true,
+    "method": "jwt",
+    "session_timeout": 3600,
+    "require_auth": ["admin", "tools"]
+  },
+  "tools": {
+    "auto_discovery": true,
+    "tools_directory": "./tools",
+    "plugin_directory": "./core/plugins",
+    "enabled_tools": ["ai-collab"]
+  },
+  "monitoring": {
+    "enabled": true,
+    "log_level": "info",
+    "cost_tracking": true,
+    "analytics": true
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "./data/simplyKI.db",
+    "auto_migrate": true
+  }
+}

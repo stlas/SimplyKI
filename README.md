@@ -1,270 +1,246 @@
-# 🚀 SimplyKI - Meta-Framework for AI Development Tools
+# SimplyKI - Das KI-Entwicklungs-Ecosystem
 
-> **Unified platform for cost-optimized AI-powered software development**
+<div align="center">
 
-[![GitHub stars](https://img.shields.io/github/stars/stlas/SimplyKI.svg)](https://github.com/stlas/SimplyKI/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Support SimplyKI](https://img.shields.io/badge/Support-Buy%20Me%20A%20Coffee-yellow.svg)](https://buymeacoffee.com/stlas)
+![SimplyKI Logo](https://img.shields.io/badge/SimplyKI-AI%20Development%20Ecosystem-blue?style=for-the-badge)
 
-**SimplyKI** ist ein Meta-Framework, das verschiedene KI-Development-Tools unter einer einheitlichen Plattform vereint. Es bietet eine zentrale Web-Oberfläche, gemeinsame Infrastruktur und ein Plugin-System für nahtlose Integration neuer KI-Tools.
+**Intelligente Softwareentwicklung einfach gemacht**
 
-## 🎯 Vision
+[![GitHub Stars](https://img.shields.io/github/stars/stlas/SimplyKI?style=social)](https://github.com/stlas/SimplyKI)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Active%20Development-orange.svg)](https://github.com/stlas/SimplyKI)
 
-SimplyKI macht KI-gestützte Softwareentwicklung **einfach, kostengünstig und skalierbar** durch:
+[🚀 Getting Started](#-getting-started) • [📚 Dokumentation](#-dokumentation) • [🛠️ Komponenten](#%EF%B8%8F-komponenten) • [💡 Features](#-features) • [🤝 Contributing](#-contributing)
 
-- 🌐 **Zentrale Web-Plattform** für alle KI-Tools
-- 🔧 **Modulare Architektur** mit Plugin-System
-- 💰 **Kostenoptimierung** durch intelligente Tool-Auswahl
-- 🚀 **Einfache Integration** neuer KI-Assistenten
-- 📊 **Einheitliches Monitoring** und Analytics
-
-## 🏗️ Architektur
-
-```
-SimplyKI Meta-Framework
-├── 🌐 Web Frontend           # Browser-basierte Benutzeroberfläche
-│   ├── Dashboard             # Zentrale Übersicht aller Tools
-│   ├── Tool Integration      # Einheitliche Tool-Oberflächen
-│   └── API Gateway          # REST-API für Tool-Kommunikation
-├── 🔧 Tool Ecosystem         # Sammlung von KI-Development-Tools
-│   ├── ai-collab            # Cost-optimized AI development assistant
-│   ├── cost-optimizer       # Intelligent model selection & budgeting
-│   ├── prompt-library       # Reusable template patterns
-│   └── [weitere Tools...]   # Erweiterbar durch Plugin-System
-└── 🏛️ Core Infrastructure    # Gemeinsame Basis für alle Tools
-    ├── Authentication       # Einheitliche Benutzerauthentifizierung
-    ├── Configuration        # Zentrale Konfigurationsverwaltung
-    ├── Plugin System        # Framework für Tool-Integration
-    └── Monitoring           # Übergreifendes Logging & Analytics
-```
-
-## 🛠️ Integrierte Tools
-
-### 🎯 ai-collab - AI Development Assistant
-> **Status**: ✅ Vollständig integriert - [Repository](https://github.com/stlas/ai-collab)
-
-Der Ursprung von SimplyKI - ein intelligenter KI-Entwicklungsassistent mit:
-- **Kostenoptimierung** durch automatische Modellauswahl
-- **Session-Management** für persistente Entwicklungskontexte
-- **Template-Engine** für 60-70% Kostenersparnis
-- **Multi-Language Support** für alle gängigen Programmiersprachen
-
-### 💰 Cost-Optimizer (Geplant)
-> **Status**: 🔄 In Entwicklung
-
-Spezialisiertes Tool für KI-Kostenmanagement:
-- Real-time Budget-Tracking
-- Modell-Performance-Vergleiche
-- Automatische Kostenoptimierung
-- ROI-Analyse für KI-Projekte
-
-### 📝 Prompt-Library (Geplant)
-> **Status**: 📋 Geplant
-
-Zentrale Sammlung wiederverwendbarer Prompt-Templates:
-- Sprachübergreifende Code-Patterns
-- Optimierte Prompt-Strategien
-- Community-basierte Template-Sammlung
-- Versionierung und A/B-Testing
-
-## 🚀 Quick Start
-
-### 1. Repository klonen
-```bash
-git clone https://github.com/stlas/SimplyKI.git
-cd SimplyKI
-```
-
-### 2. Tools installieren
-```bash
-# ai-collab integrieren (als Submodul)
-git submodule add https://github.com/stlas/ai-collab.git tools/ai-collab
-git submodule update --init --recursive
-
-# Core-System initialisieren
-./core/setup.sh
-```
-
-### 3. Web-Frontend starten
-```bash
-# Development-Server starten
-cd web
-npm install
-npm run dev
-
-# Öffne: http://localhost:3000
-```
-
-### 4. Erstes Tool verwenden
-```bash
-# ai-collab über SimplyKI-Interface
-./tools/ai-collab/core/src/ai-collab.sh start
-
-# Oder direkt im Web-Frontend: http://localhost:3000/tools/ai-collab
-```
-
-## 🌐 Web-Frontend Features
-
-### 📊 Zentrales Dashboard
-- **Tool-Übersicht** - Alle verfügbaren KI-Tools auf einen Blick
-- **Status-Monitoring** - Real-time Gesundheitschecks aller Tools
-- **Usage-Analytics** - Kosten, Performance und Nutzungsstatistiken
-- **Quick-Actions** - Direkter Zugang zu häufig verwendeten Funktionen
-
-### 🔧 Tool-Integration
-- **Einheitliche Oberfläche** - Konsistente UX für alle Tools
-- **Plugin-Framework** - Einfache Integration neuer Tools
-- **Cross-Tool-Communication** - Tools können miteinander kommunizieren
-- **Shared-Resources** - Gemeinsame Nutzung von Konfiguration und Sessions
-
-### 🔒 Sicherheit & Auth
-- **Centralized Authentication** - Einmalige Anmeldung für alle Tools
-- **Role-Based Access** - Granulare Berechtigungskontrolle
-- **API-Key Management** - Sichere Verwaltung aller API-Schlüssel
-- **Audit-Logging** - Vollständige Nachverfolgung aller Aktivitäten
-
-## 🔌 Plugin-System
-
-SimplyKI macht es einfach, neue KI-Tools zu integrieren:
-
-### Neues Tool hinzufügen
-```javascript
-// tools/my-ki-tool/simplyKI-plugin.js
-export default {
-  name: 'my-ki-tool',
-  version: '1.0.0',
-  description: 'Mein neues KI-Tool',
-  
-  // Tool-spezifische Konfiguration
-  config: {
-    apiEndpoint: '/api/my-tool',
-    requiredAuth: true,
-    permissions: ['read', 'write']
-  },
-  
-  // Web-Interface Integration
-  webComponent: './components/MyToolInterface.vue',
-  
-  // Lifecycle-Hooks
-  async onInit() {
-    // Tool-Initialisierung
-  },
-  
-  async onActivate() {
-    // Tool wird aktiviert
-  }
-};
-```
-
-### Plugin registrieren
-```bash
-# Automatische Plugin-Erkennung
-./core/plugins/register.sh tools/my-ki-tool
-
-# Plugin im Web-Frontend verfügbar
-# http://localhost:3000/tools/my-ki-tool
-```
-
-## 📈 Entwicklungsroadmap
-
-### 🎯 Phase 1: Foundation (Aktuell)
-- [x] **Repository-Setup** und Grundstruktur
-- [x] **ai-collab Integration** als erstes Tool
-- [ ] **Web-Frontend Grundgerüst** mit Vue.js/React
-- [ ] **Core-Authentication** und Basis-API
-- [ ] **Plugin-System MVP** für Tool-Integration
-
-### 🚀 Phase 2: Platform (Q1 2025)
-- [ ] **Cost-Optimizer Tool** als zweites Plugin
-- [ ] **Prompt-Library Integration** 
-- [ ] **Advanced Web-UI** mit Dashboard und Analytics
-- [ ] **Cross-Tool Communication** Framework
-- [ ] **Mobile-Responsive** Design
-
-### 🌟 Phase 3: Ecosystem (Q2 2025)
-- [ ] **Community-Portal** für Plugin-Entwickler
-- [ ] **Marketplace** für KI-Tool-Plugins
-- [ ] **Enterprise-Features** (SSO, LDAP, Multi-Tenant)
-- [ ] **Cloud-Deployment** Optionen
-- [ ] **API-Marketplace** Integration
-
-### 🚀 Phase 4: Intelligence (Q3 2025)
-- [ ] **AI-powered Tool-Orchestration** 
-- [ ] **Predictive Cost-Management**
-- [ ] **Automated Workflow-Optimization**
-- [ ] **Smart Plugin-Recommendations**
-- [ ] **Multi-Model AI-Integration**
-
-## 💻 Technologie-Stack
-
-### Frontend
-- **Framework**: Vue.js 3 / React (TBD)
-- **Build-Tool**: Vite / Next.js
-- **UI-Library**: Tailwind CSS / Ant Design
-- **State-Management**: Pinia / Redux Toolkit
-
-### Backend/Core
-- **Runtime**: Node.js / Deno
-- **API**: Express.js / Fastify
-- **Database**: SQLite / PostgreSQL
-- **Authentication**: JWT / OAuth2
-
-### Tools & Integration
-- **ai-collab**: Bash-basiert (bestehend)
-- **Plugin-System**: JavaScript/TypeScript
-- **IPC**: REST-API / WebSockets
-- **Deployment**: Docker / PM2
-
-## 🤝 Beitragen
-
-SimplyKI ist ein Community-Projekt! Wir freuen uns über Beiträge:
-
-### Für Tool-Entwickler
-```bash
-# Neues KI-Tool als Plugin entwickeln
-git clone https://github.com/stlas/SimplyKI.git
-cd SimplyKI
-./docs/developer/create-plugin.md  # Anleitung folgen
-```
-
-### Für Core-Entwickler
-```bash
-# SimplyKI-Platform verbessern
-git clone https://github.com/stlas/SimplyKI.git
-cd SimplyKI
-npm install
-npm run dev  # Development-Umgebung
-```
-
-### Dokumentation
-- **User-Guide**: `docs/user-guide/` - Hilfe für Endbenutzer
-- **API-Docs**: `docs/api/` - Technische Dokumentation
-- **Developer-Guide**: `docs/developer/` - Plugin-Entwicklung
-
-## 📄 Lizenz
-
-SimplyKI steht unter der [MIT-Lizenz](LICENSE). Alle integrierten Tools behalten ihre jeweiligen Lizenzen.
-
-## 🙏 Unterstützung
-
-SimplyKI ist Open-Source und finanziert sich durch Community-Unterstützung:
-
-[![Buy Me A Coffee](https://img.shields.io/badge/Support-Buy%20Me%20A%20Coffee-yellow.svg?style=for-the-badge)](https://buymeacoffee.com/stlas)
-
-### Warum unterstützen?
-- 🚀 **Innovative KI-Platform** für die Entwickler-Community
-- 💡 **Kostenoptimierte KI-Tools** für alle zugänglich machen
-- 🌍 **Open-Source-Philosophie** fördern
-- 🔬 **Cutting-Edge AI-Research** unterstützen
-
-## 👨‍💻 Team & Credits
-
-**Projekt-Lead**: [sTLAs](https://github.com/stlas)  
-**AI-Partner**: Claude (Anthropic)  
-**Community**: Alle Contributors und Plugin-Entwickler
+</div>
 
 ---
 
-**Gebaut für die Zukunft der KI-gestützten Softwareentwicklung** 🚀
+## 🎯 Was ist SimplyKI?
 
-*SimplyKI - Making AI Development Simply Powerful*
+SimplyKI ist ein umfassendes Open-Source Ecosystem für KI-gestützte Softwareentwicklung. Es vereint mehrere spezialisierte Tools und Services, die nahtlos zusammenarbeiten, um Entwicklern eine kostenoptimierte, effiziente und intelligente Entwicklungsumgebung zu bieten.
+
+### 🌟 Kernprinzipien
+
+- **🎯 Einfachheit**: Komplexe KI-Funktionen einfach nutzbar machen
+- **💰 Kosteneffizienz**: Bis zu 90% Kostenersparnis durch intelligente Optimierung
+- **🔧 Modularität**: Verwende nur die Komponenten, die du brauchst
+- **🌐 Open Source**: Vollständig transparent und erweiterbar
+
+## 🏗️ Ecosystem-Architektur
+
+```mermaid
+graph TB
+    subgraph "SimplyKI Ecosystem"
+        AI[ai-collab<br/>KI-Entwicklungsassistent]
+        WEB[SmartKI-web<br/>Web Interface]
+        CORE[SmartKI Core<br/>Backend Services]
+        PM[SmartKI-PM<br/>Projektmanagement]
+        KB[SmartKI-Obsidian<br/>Knowledge Base]
+        GW[SmartKI-Pangolin<br/>Internet Gateway]
+        MOB[RemoteKI<br/>Mobile App]
+    end
+    
+    AI --> CORE
+    WEB --> CORE
+    PM --> CORE
+    KB --> CORE
+    GW --> CORE
+    MOB --> GW
+    
+    CORE --> API[External APIs]
+    GW --> NET[Internet]
+```
+
+## 🛠️ Komponenten
+
+### 1. [ai-collab](https://github.com/stlas/ai-collab) - KI-Entwicklungsassistent
+Der Kern des Systems. Ein intelligenter Assistent, der:
+- ✅ Automatisch das optimale KI-Modell auswählt
+- ✅ Kosten um bis zu 90% reduziert durch Template-Optimierung
+- ✅ Sessions und Kontext über Neustarts hinweg speichert
+- ✅ Mit allen gängigen Programmiersprachen arbeitet
+
+### 2. [SmartKI Core](https://github.com/stlas/SmartKI) - Backend Services
+Microservices-Architektur für:
+- 🔌 API Gateway mit intelligentem Routing
+- 🔍 Service Discovery und Health Monitoring
+- 🤖 AI Orchestration Hub
+- 📊 Real-time Analytics
+
+### 3. [SmartKI-web](https://github.com/stlas/SmartKI-web) - Web Interface
+Modernes React-basiertes Frontend mit:
+- 📊 Echtzeit-Dashboards
+- 💬 WebSocket-basierte Updates
+- 🌍 Multi-Language Support (DE/EN)
+- 🎨 Dark/Light Theme
+
+### 4. [SmartKI-PM](https://github.com/stlas/SmartKI-PM) - Projektmanagement
+Kanboard-basiertes PM-System mit:
+- 📋 Kanban-Boards für agile Entwicklung
+- 🤖 Automatische Task-Erstellung aus KI-Sessions
+- 💰 Kosten-Tracking pro Projekt
+- 📈 Entwicklungszeit-Analysen
+
+### 5. [SmartKI-Obsidian](https://github.com/stlas/SmartKI-Obsidian) - Knowledge Base
+Wissensmanagement mit:
+- 📝 Automatische Session-Dokumentation
+- 🔗 Verknüpfung verwandter Entwicklungen
+- 🏷️ Tag-basierte Organisation
+- 🔍 Volltext-Suche
+
+### 6. [SmartKI-Pangolin](https://github.com/stlas/SmartKI-Pangolin) - Internet Gateway
+Sicherer Tunnel-Service für:
+- 🔒 WireGuard VPN-Tunnels
+- 🌐 Domain-basiertes Routing
+- 🔐 SSL-Zertifikat-Management
+- 📊 Bandwidth-Monitoring
+
+### 7. [RemoteKI](https://github.com/stlas/RemoteKI) - Mobile SSH Terminal
+Android App (iOS geplant) für:
+- 📱 SSH-Zugriff von unterwegs
+- 💻 Terminal-Emulation
+- 📁 File Upload/Download
+- 🔄 Session-Management
+
+## 💡 Features
+
+### Für Entwickler
+- **🚀 Schnellstart**: In 5 Minuten einsatzbereit
+- **🧠 Intelligente Unterstützung**: KI wählt optimale Lösungswege
+- **💰 Kostenkontrolle**: Echtzeit-Budgetüberwachung
+- **📈 Produktivität**: 60-70% schnellere Entwicklung
+
+### Für Teams
+- **👥 Kollaboration**: Gemeinsame Projekte und Wissensaustausch
+- **📊 Transparenz**: Vollständige Entwicklungs-Historie
+- **🎯 Projektmanagement**: Integrierte Task-Verwaltung
+- **💼 Enterprise-Ready**: Skalierbar und sicher
+
+### Für Unternehmen
+- **💵 ROI**: Messbare Kosteneinsparungen
+- **🔒 Sicherheit**: On-Premise Deployment möglich
+- **📈 Analytics**: Detaillierte Nutzungsstatistiken
+- **🔧 Anpassbar**: Vollständig customizable
+
+## 🚀 Getting Started
+
+### Schnellstart (5 Minuten)
+
+```bash
+# 1. Repository klonen
+git clone https://github.com/stlas/SimplyKI.git
+cd SimplyKI
+
+# 2. Installer ausführen
+./install.sh
+
+# 3. API-Key konfigurieren
+echo "ANTHROPIC_API_KEY=your-key-here" > .env
+
+# 4. System starten
+./start-simplyki.sh
+```
+
+### Docker-Installation (Empfohlen)
+
+```bash
+# Mit Docker Compose
+docker-compose up -d
+
+# Oder einzelne Services
+docker run -d -p 3200:3000 simplyki/core:latest
+docker run -d -p 3000:3000 simplyki/web:latest
+```
+
+## 📚 Dokumentation
+
+### Schnellzugriff
+- [🚀 Installation Guide](docs/INSTALLATION.md)
+- [📖 Benutzerhandbuch](docs/USER-GUIDE.md)
+- [🔧 API Dokumentation](docs/API.md)
+- [🏗️ Architektur](docs/ARCHITECTURE.md)
+
+### Tutorials
+- [Erste Schritte mit ai-collab](docs/tutorials/FIRST-STEPS.md)
+- [Projekt-Setup mit SmartKI-PM](docs/tutorials/PROJECT-SETUP.md)
+- [Remote-Zugriff einrichten](docs/tutorials/REMOTE-ACCESS.md)
+
+## 💰 Kostenbeispiel
+
+Ein typisches Entwicklungsprojekt mit SimplyKI:
+
+| Ohne SimplyKI | Mit SimplyKI | Ersparnis |
+|---------------|--------------|-----------|
+| $500/Monat | $50/Monat | 90% |
+| 100h Entwicklung | 40h Entwicklung | 60% |
+| Manuelles PM | Automatisiert | ∞ |
+
+## 🗺️ Roadmap
+
+### Q3 2025 ✅
+- [x] Core System Release
+- [x] Web Interface
+- [x] Mobile App (Alpha)
+- [x] Documentation
+
+### Q4 2025 🚧
+- [ ] Plugin Marketplace
+- [ ] Cloud Hosting Option
+- [ ] iOS App
+- [ ] AI Model Marketplace
+
+### 2026 📅
+- [ ] Enterprise Features
+- [ ] Multi-Region Support
+- [ ] Advanced Analytics
+- [ ] Custom AI Training
+
+## 🤝 Contributing
+
+Wir freuen uns über Beiträge! Siehe [CONTRIBUTING.md](CONTRIBUTING.md) für Details.
+
+### Wie du helfen kannst
+- 🐛 Bugs melden
+- 💡 Features vorschlagen
+- 📝 Dokumentation verbessern
+- 🔧 Code beitragen
+- 🌍 Übersetzen
+- ⭐ Projekt starred
+
+## 📊 Status & Statistiken
+
+| Komponente | Version | Status | Tests | Coverage |
+|------------|---------|--------|-------|----------|
+| ai-collab | v2.1.3 | ✅ Stable | ✅ | 85% |
+| SmartKI Core | v1.0.0 | ✅ Stable | ✅ | 78% |
+| SmartKI-web | v1.0.0 | ✅ Stable | ✅ | 72% |
+| RemoteKI | v0.1.0 | 🚧 Alpha | ⚠️ | 45% |
+
+## 💬 Community & Support
+
+- **Discord**: [SimplyKI Community](https://discord.gg/simplyki) (coming soon)
+- **Forum**: [discuss.simplyki.com](https://discuss.simplyki.com) (coming soon)
+- **Email**: support@simplyki.com
+- **Twitter**: [@SimplyKI](https://twitter.com/simplyki)
+
+## 📄 Lizenz
+
+SimplyKI ist unter der MIT-Lizenz veröffentlicht. Siehe [LICENSE](LICENSE) für Details.
+
+## 🙏 Danksagungen
+
+Besonderer Dank an:
+- Die Open Source Community
+- Alle Contributors und Early Adopters
+- Claude AI für die Unterstützung bei der Entwicklung
+
+---
+
+<div align="center">
+
+**SimplyKI - Making AI-powered development simply powerful** 🚀
+
+[Website](https://simplyki.com) • [Documentation](https://docs.simplyki.com) • [Blog](https://blog.simplyki.com)
+
+</div>

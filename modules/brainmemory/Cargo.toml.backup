@@ -1,0 +1,7 @@
+# Backup von Cargo.toml für CI/CD Fix
+[package]
+name = "brainmemory"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

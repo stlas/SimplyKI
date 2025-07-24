@@ -1,0 +1,49 @@
+#!/bin/bash
+# SimplyKI - Main Entry Point
+# Erstellt: 2025-07-24 14:05:00 CEST
+
+SIMPLYKIROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export SIMPLYKIROOT
+
+# Lade Konfiguration
+if [ -f "$SIMPLYKIROOT/config/simplyKI.conf" ]; then
+    source "$SIMPLYKIROOT/config/simplyKI.conf"
+fi
+
+# Module verfügbar machen
+export PATH="$SIMPLYKIROOT/modules/hcs/src:$SIMPLYKIROOT/modules/pkg/src:$PATH"
+
+# Hauptfunktion
+case "$1" in
+    hcs)
+        shift
+        "$SIMPLYKIROOT/modules/hcs/src/hybrid-context-manager.sh" "$@"
+        ;;
+    pkg)
+        shift
+        "$SIMPLYKIROOT/modules/pkg/src/pkg-manager.sh" "$@"
+        ;;
+    backup)
+        shift
+        "$SIMPLYKIROOT/modules/backup/src/backup-manager.sh" "$@"
+        ;;
+    status)
+        echo "🚀 SimplyKI Status"
+        echo "=================="
+        echo "Root: $SIMPLYKIROOT"
+        echo "Modules:"
+        ls -1 "$SIMPLYKIROOT/modules/" | sed 's/^/  - /'
+        ;;
+    *)
+        echo "SimplyKI - Universal AI Development Framework"
+        echo ""
+        echo "Usage: simplyKI <command> [options]"
+        echo ""
+        echo "Commands:"
+        echo "  hcs     - Hybrid Context System"
+        echo "  pkg     - Package Manager"
+        echo "  backup  - Backup System"
+        echo "  status  - Show status"
+        echo ""
+        ;;
+esac

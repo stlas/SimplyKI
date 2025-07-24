@@ -1,0 +1,102 @@
+title,description,priority,estimated_hours,column
+1. Systemanalyse und Bestandsaufnahme,"Vollständige Analyse des bestehenden Shell-Systems
+
+Subtasks:
+1.1 Analyse aller Shell-Skripte in core/src/
+1.2 Dokumentation aller API-Endpunkte und curl-Aufrufe
+1.3 Mapping der Datenstrukturen und Dateiformate
+1.4 Identifikation kritischer Workflows
+1.5 Performance-Baseline erstellen",3,40,Backlog
+2. Architektur-Design BrainMemory,"Design des gehirnähnlichen Memory-Systems
+
+Subtasks:
+2.1 Rust-Projektstruktur definieren
+2.2 Memory-System Architektur (Working, LongTerm, Association)
+2.3 API-Design für AI-Clients
+2.4 Datenbank-Schema (SQLite + VectorDB)
+2.5 Migration-Strategy dokumentieren",3,80,Backlog
+3. Core BrainMemory Implementation,"Implementierung des Kern-Memory-Systems
+
+Subtasks:
+3.1 Basis Rust-Projekt Setup
+3.2 WorkingMemory Modul
+3.3 LongTermMemory mit SQLite
+3.4 AssociationNetwork Implementation
+3.5 ContextCache System",3,120,Backlog
+4. OptimizeMax Integration,"Integration der Kostenoptimierungs-Features
+
+Subtasks:
+4.1 ModelSelector Implementation
+4.2 BudgetTracker mit Persistenz
+4.3 ToolController mit canUseTool
+4.4 ContextOptimizer
+4.5 Cost-Analytics Dashboard",3,80,Backlog
+5. AI-Client Implementierungen,"Implementierung der AI-Service-Clients
+
+Subtasks:
+5.1 Claude Client mit additionalContext
+5.2 GPT Client Adapter
+5.3 Local Model Support (Ollama)
+5.4 Client-Router Logic
+5.5 Fallback-Mechanismen",2,80,Backlog
+6. Shell-zu-Rust Migration Tools,"Tools für nahtlose Migration
+
+Subtasks:
+6.1 Config-Migration Tool
+6.2 Session-Daten Importer
+6.3 Template-zu-Memory Converter
+6.4 Kosten-Historie Migration
+6.5 Backup/Restore Tools",3,40,Backlog
+7. CLI Implementation,"Command-Line Interface mit Shell-Kompatibilität
+
+Subtasks:
+7.1 Argument Parser (clap)
+7.2 Shell-kompatible Commands
+7.3 Interactive Mode
+7.4 Batch Processing
+7.5 Environment Variable Support",3,40,Backlog
+8. Web API (Axum),"REST API für Web-Integration
+
+Subtasks:
+8.1 REST API Endpoints
+8.2 WebSocket Support
+8.3 Authentication/Authorization
+8.4 API Documentation (OpenAPI)
+8.5 Rate Limiting",2,40,Backlog
+9. Module-Integration,"Integration bestehender SimplyKI-Module
+
+Subtasks:
+9.1 HCS (Hybrid Context System) Integration
+9.2 PKG (Package Manager) Replacement
+9.3 NEUSTART System Migration
+9.4 Backup-System Integration
+9.5 MCP Server Compatibility",3,120,Backlog
+10. Testing & QA,"Umfassende Qualitätssicherung
+
+Subtasks:
+10.1 Unit Tests (>80% Coverage)
+10.2 Integration Tests
+10.3 Performance Benchmarks
+10.4 Memory Leak Tests
+10.5 Parallel-Betrieb Tests",3,80,Backlog
+11. Deployment & Rollout,"Produktions-Deployment
+
+Subtasks:
+11.1 CI/CD Pipeline (GitHub Actions)
+11.2 Docker Container
+11.3 Systemd Service Files
+11.4 Rollback-Strategie
+11.5 Monitoring Setup",2,40,Backlog
+12. Dokumentation,"Vollständige Projekt-Dokumentation
+
+Subtasks:
+12.1 Technische Dokumentation
+12.2 Migrations-Guide
+12.3 API-Referenz
+12.4 Benutzerhandbuch
+12.5 Troubleshooting Guide",2,60,Backlog
+Modul-Analyse: HCS (Hybrid Context System),Analyse wie HCS durch BrainMemory ersetzt werden kann,3,20,Analyse
+Modul-Analyse: PKG (Package Manager),Analyse der PKG-Funktionen für Rust-Integration,2,16,Analyse
+Modul-Analyse: Session-Manager,Session-Management Migration zu WorkingMemory,3,16,Analyse
+Modul-Analyse: Cost-Optimizer,Integration in OptimizeMax Core,3,20,Analyse
+Modul-Analyse: NEUSTART System,Migration zu Memory Snapshot System,2,16,Analyse

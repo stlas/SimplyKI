@@ -1,0 +1,111 @@
+{
+  "version": "1.0.0",
+  "name": "SimplyKI Package Registry",
+  "description": "Central registry for all SimplyKI modules and plugins",
+  "updated": "2025-07-24T13:58:00+02:00",
+  "modules": {
+    "hcs": {
+      "name": "Hybrid Context System",
+      "version": "2.0.0",
+      "description": "Intelligent context management with vector store support",
+      "path": "modules/hcs",
+      "type": "shell",
+      "main": "hybrid-context-manager.sh",
+      "dependencies": ["neustart", "vector-store"],
+      "scripts": {
+        "install": "setup.sh",
+        "test": "test-hcs.sh",
+        "status": "hybrid-context-manager.sh status"
+      },
+      "author": "SimplyKI Team",
+      "status": "stable"
+    },
+    "optimizemax": {
+      "name": "OptimizeMax Cost Optimizer",
+      "version": "1.0.0",
+      "description": "Intelligent cost optimization for AI API calls",
+      "path": "modules/optimizemax",
+      "type": "shell",
+      "main": "optimize.sh",
+      "dependencies": ["cost-tracker"],
+      "scripts": {
+        "install": "setup.sh",
+        "benchmark": "benchmark.sh"
+      },
+      "author": "SimplyKI Team",
+      "status": "beta"
+    },
+    "backup": {
+      "name": "Backup Manager",
+      "version": "1.5.0",
+      "description": "Differential backup system with monitoring",
+      "path": "modules/backup",
+      "type": "shell",
+      "main": "backup-manager.sh",
+      "dependencies": ["monitoring"],
+      "scripts": {
+        "install": "setup.sh",
+        "backup": "backup-manager.sh backup",
+        "restore": "backup-manager.sh restore"
+      },
+      "author": "SimplyKI Team",
+      "status": "stable"
+    },
+    "pkg": {
+      "name": "Package Manager",
+      "version": "1.0.0",
+      "description": "Package management for SimplyKI modules",
+      "path": "modules/pkg",
+      "type": "shell",
+      "main": "pkg-manager.sh",
+      "dependencies": [],
+      "scripts": {
+        "self-update": "pkg-manager.sh update-self"
+      },
+      "author": "SimplyKI Team",
+      "status": "stable"
+    },
+    "neustart": {
+      "name": "NEUSTART System",
+      "version": "1.2.0",
+      "description": "Session recovery and auto-documentation",
+      "path": "modules/neustart",
+      "type": "shell",
+      "main": "neustart-manager.sh",
+      "dependencies": [],
+      "scripts": {
+        "generate": "neustart-manager.sh generate",
+        "auto-update": "neustart-auto-updater.sh"
+      },
+      "author": "SimplyKI Team",
+      "status": "stable"
+    },
+    "brainmemory": {
+      "name": "BrainMemory System",
+      "version": "0.1.0",
+      "description": "Rust-based brain-like memory system",
+      "path": "modules/brainmemory",
+      "type": "rust",
+      "main": "target/release/brainmemory",
+      "dependencies": [],
+      "scripts": {
+        "build": "cargo build --release",
+        "test": "cargo test",
+        "bench": "cargo bench"
+      },
+      "author": "SimplyKI Team",
+      "status": "planned"
+    }
+  },
+  "repositories": {
+    "local": "file:///home/aicollab/SimplyKI-repo",
+    "github": "https://github.com/stlas/SimplyKI",
+    "backup": "file:///backup/SimplyKI"
+  },
+  "config": {
+    "auto_update": true,
+    "check_interval": 86400,
+    "install_path": "/home/aicollab/SimplyKI-repo/modules",
+    "backup_on_update": true
+  }
+}

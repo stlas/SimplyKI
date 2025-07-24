@@ -1,0 +1,118 @@
+name: SimplyKI CI/CD
+
+on:
+  push:
+    branches: [ master, main, develop ]
+  pull_request:
+    branches: [ master, main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  shell-tests:
+    name: Shell Scripts Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install shellcheck
+      run: sudo apt-get update && sudo apt-get install -y shellcheck
+    
+    - name: Run shellcheck
+      run: |
+        find . -name "*.sh" -type f | while read script; do
+          echo "Checking $script"
+          shellcheck "$script" || true
+        done
+    
+    - name: Test SimplyKI binary
+      run: |
+        chmod +x bin/simplyKI
+        ./bin/simplyKI status
+
+  brainmemory-build:
+    name: BrainMemory Rust Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust: [stable, beta]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+    
+    - name: Cache cargo registry
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+    
+    - name: Build BrainMemory
+      working-directory: modules/brainmemory
+      run: |
+        cargo build --verbose
+        cargo test --verbose
+    
+    - name: Run clippy
+      working-directory: modules/brainmemory
+      run: cargo clippy -- -D warnings
+      if: matrix.rust == 'stable'
+
+  documentation:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Generate Module Docs
+      run: |
+        echo "# SimplyKI Module Documentation" > docs/modules.md
+        echo "Generated: $(date)" >> docs/modules.md
+        echo "" >> docs/modules.md
+        
+        for module in modules/*/; do
+          if [ -f "$module/README.md" ]; then
+            echo "## $(basename $module)" >> docs/modules.md
+            cat "$module/README.md" >> docs/modules.md
+            echo "" >> docs/modules.md
+          fi
+        done
+    
+    - name: Commit docs
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add docs/modules.md || true
+        git commit -m "docs: Auto-generate module documentation" || true
+        git push || true
+
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: [shell-tests, brainmemory-build]
+    if: github.event_name == 'push' && contains(github.ref, 'tags/v')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build release artifacts
+      run: |
+        mkdir -p release
+        tar czf release/simplyKI-${{ github.ref_name }}.tar.gz \
+          --exclude='.git' \
+          --exclude='target' \
+          --exclude='node_modules' \
+          .
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: release/*
+        generate_release_notes: true

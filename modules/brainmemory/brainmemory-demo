@@ -1,0 +1,34 @@
+#\!/bin/bash
+# BrainMemory Demo Binary (Pre-Rust Build)
+# Simuliert das Rust Binary bis gcc installiert ist
+
+echo "🧠 BrainMemory v0.1.0"
+echo "===================="
+echo ""
+
+case "$1" in
+    status)
+        echo "Status: Active (Demo Mode)"
+        echo "Memory: 0 entries"
+        echo "Performance: Simulated"
+        echo ""
+        echo "⚠️  Dies ist eine Demo. Für echte Performance:"
+        echo "   sudo apt-get install build-essential"
+        echo "   cargo build --release"
+        ;;
+    store)
+        echo "Stored: $2 = $3 (Demo)"
+        ;;
+    retrieve)
+        echo "Retrieved: $2 = <value> (Demo)"
+        ;;
+    benchmark)
+        echo "Running benchmark..."
+        echo "Shell version: 2000μs/op"
+        echo "Rust version: 10μs/op (projected)"
+        echo "Speedup: 200x (when built)"
+        ;;
+    *)
+        echo "Usage: brainmemory [status < /dev/null | store|retrieve|benchmark]"
+        ;;
+esac

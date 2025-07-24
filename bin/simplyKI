@@ -27,6 +27,14 @@ case "$1" in
         shift
         "$SIMPLYKIROOT/modules/backup/src/backup-manager.sh" "$@"
         ;;
+    brain|brainmemory)
+        shift
+        if [ -x "$SIMPLYKIROOT/modules/brainmemory/target/release/brainmemory" ]; then
+            "$SIMPLYKIROOT/modules/brainmemory/target/release/brainmemory" "$@"
+        else
+            "$SIMPLYKIROOT/modules/brainmemory/brainmemory-demo" "$@"
+        fi
+        ;;
     status)
         echo "🚀 SimplyKI Status"
         echo "=================="
@@ -43,6 +51,7 @@ case "$1" in
         echo "  hcs     - Hybrid Context System"
         echo "  pkg     - Package Manager"
         echo "  backup  - Backup System"
+        echo "  brain   - BrainMemory System"
         echo "  status  - Show status"
         echo ""
         ;;

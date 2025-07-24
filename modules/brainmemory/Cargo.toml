@@ -1,0 +1,24 @@
+[package]
+name = "brainmemory"
+version = "0.1.0"
+edition = "2021"
+authors = ["SimplyKI Team"]
+description = "Brain-like memory system for SimplyKI"
+
+[dependencies]
+tokio = { version = "1.40", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+dashmap = "6.1"
+chrono = "0.4"
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "memory_benchmark"
+harness = false

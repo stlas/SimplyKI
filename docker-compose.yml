@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  simplyKI:
+    build: .
+    image: simplyKI:latest
+    container_name: simplyKI-main
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - SIMPLYKIROOT=/opt/simplyKI
+    volumes:
+      - ./projects:/home/simplyKI/projects
+      - ./local:/home/simplyKI/local
+      - simplyKI-data:/home/simplyKI/data
+    ports:
+      - "3000:3000"  # For future Web UI
+      - "8080:8080"  # For API
+    networks:
+      - simplyKI-network
+    restart: unless-stopped
+    command: ["bash", "-c", "while true; do simplyKI status; sleep 300; done"]
+
+  # BrainMemory dedicated service
+  brainmemory:
+    build: .
+    image: simplyKI:latest
+    container_name: simplyKI-brain
+    environment:
+      - BRAIN_MODE=server
+      - BRAIN_PORT=5000
+    volumes:
+      - brain-data:/home/simplyKI/brain-data
+    ports:
+      - "5000:5000"
+    networks:
+      - simplyKI-network
+    restart: unless-stopped
+    command: ["brainmemory", "server"]
+
+  # Future Web UI
+  # web-ui:
+  #   build: ./web-ui
+  #   container_name: simplyKI-web
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - simplyKI-network
+  #   depends_on:
+  #     - simplyKI
+  #     - brainmemory
+
+volumes:
+  simplyKI-data:
+  brain-data:
+
+networks:
+  simplyKI-network:
+    driver: bridge

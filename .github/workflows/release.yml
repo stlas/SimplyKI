@@ -1,0 +1,117 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        toolchain: stable
+    
+    - name: Build BrainMemory
+      working-directory: modules/brainmemory
+      run: |
+        cargo build --release
+        strip target/release/brainmemory
+    
+    - name: Package Linux Binary
+      run: |
+        mkdir -p dist/simplyKI-linux-x64
+        cp -r bin core modules config docs README.md QUICKSTART.md dist/simplyKI-linux-x64/
+        cp modules/brainmemory/target/release/brainmemory dist/simplyKI-linux-x64/modules/brainmemory/
+        cd dist
+        tar czf simplyKI-${{ github.ref_name }}-linux-x64.tar.gz simplyKI-linux-x64
+    
+    - name: Upload Linux Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: linux-binary
+        path: dist/*.tar.gz
+
+  build-docker:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+      if: github.event_name != 'pull_request'
+    
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: stlas/simplyKI
+        tags: |
+          type=ref,event=tag
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+    
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: ${{ github.event_name != 'pull_request' }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  create-release:
+    name: Create Release
+    needs: [build-linux, build-docker]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: linux-binary
+        path: dist/
+    
+    - name: Generate Release Notes
+      id: notes
+      run: |
+        echo "# SimplyKI ${{ github.ref_name }}" > RELEASE_NOTES.md
+        echo "" >> RELEASE_NOTES.md
+        echo "## 🚀 What's New" >> RELEASE_NOTES.md
+        git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD >> RELEASE_NOTES.md
+        echo "" >> RELEASE_NOTES.md
+        echo "## 📦 Installation" >> RELEASE_NOTES.md
+        echo '```bash' >> RELEASE_NOTES.md
+        echo "# Linux" >> RELEASE_NOTES.md
+        echo "wget https://github.com/stlas/SimplyKI/releases/download/${{ github.ref_name }}/simplyKI-${{ github.ref_name }}-linux-x64.tar.gz" >> RELEASE_NOTES.md
+        echo "tar xzf simplyKI-${{ github.ref_name }}-linux-x64.tar.gz" >> RELEASE_NOTES.md
+        echo "cd simplyKI-linux-x64" >> RELEASE_NOTES.md
+        echo "./bin/simplyKI status" >> RELEASE_NOTES.md
+        echo "" >> RELEASE_NOTES.md
+        echo "# Docker" >> RELEASE_NOTES.md
+        echo "docker run -it stlas/simplyKI:${{ github.ref_name }}" >> RELEASE_NOTES.md
+        echo '```' >> RELEASE_NOTES.md
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/*
+        body_path: RELEASE_NOTES.md
+        generate_release_notes: true

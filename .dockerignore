@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# Build artifacts
+target/
+*.lock
+!Cargo.lock
+
+# Local data
+local/
+sessions/
+logs/
+*.log
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Documentation builds
+docs/_build/
+*.pdf
+
+# Test coverage
+coverage/
+*.lcov
+
+# Node modules (for future web UI)
+node_modules/
+npm-debug.log
+yarn-error.log
